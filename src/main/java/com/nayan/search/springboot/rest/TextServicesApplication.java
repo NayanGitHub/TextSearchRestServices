@@ -5,11 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-//@ComponentScan({"com.in28minutes.springboot.service"})
-//@ComponentScan(basePackages= {"com.in28minutes.springboot.service"})
-public class StudentServicesApplication {
+public class TextServicesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StudentServicesApplication.class, args);
+		SpringApplication.run(TextServicesApplication.class, args);
 	}
 }
