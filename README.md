@@ -8,9 +8,11 @@ To run the application, open git bash in the desired location and execute the be
 
 1. $ git clone https://github.com/NayanGitHub/TextSearchRestServices.git
 
-2. $ mvn clean install
+2. cd TextSearchRestServices/
 
-3. $ mvn spring-boot:run
+3. $ mvn clean install
+
+4. $ mvn spring-boot:run
    OR run the java class TextServicesApplication.java as Java Application
 
 Run the Below test cases:
