@@ -13,7 +13,7 @@ To run the application, open git bash in the desired location and execute the be
 3. $ mvn clean install
 
 4. $ mvn spring-boot:run
-   OR run the java class TextServicesApplication.java as Java Application
+   OR Import the Project to Eclipse and run the java class TextServicesApplication.java as Java Application
 
 Run the Below test cases:
 
