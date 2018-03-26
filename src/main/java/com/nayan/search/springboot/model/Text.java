@@ -4,7 +4,7 @@ package com.nayan.search.springboot.model;
 public class Text {
 	
 	
-	public Text(String text, long count) {
+	public Text(String text, int count) {
 		super();
 		this.text = text;
 		this.count = count;
@@ -13,7 +13,7 @@ public class Text {
 		
 	}
 	private String text;
-	private long count;
+	private int count;
 	
 	public String getText() {
 		return text;
@@ -21,10 +21,10 @@ public class Text {
 	public void setText(String text) {
 		this.text = text;
 	}
-	public long getCount() {
+	public int getCount() {
 		return count;
 	}
-	public void setCount(long count) {
+	public void setCount(int count) {
 		this.count = count;
 	}
 }

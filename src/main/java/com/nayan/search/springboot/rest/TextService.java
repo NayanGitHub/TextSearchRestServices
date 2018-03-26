@@ -1,8 +1,5 @@
 package com.nayan.search.springboot.rest;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import com.nayan.search.helper.SearchTextFromFile;

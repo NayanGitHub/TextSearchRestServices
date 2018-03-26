@@ -34,8 +34,6 @@ public class SearchTextFromFile {
 		String readWords = "";
 		ArrayList<String> allWordList = new ArrayList<String>();
 		ArrayList<Text> textList = new ArrayList<Text>();
-		//Map<String, Integer> wordsWithCounts = new HashMap<String, Integer>();
-		//Text txt = new Text();
 
 		String[] excludedSymbols = { " ", ",", ".", "/", ":", ";", "<", ">", "\n", "\r" };
 		String readByteCharByChar = "";
@@ -43,6 +41,7 @@ public class SearchTextFromFile {
 
 		try {
 			InputStream inputStream = new FileInputStream(textFileLocation);
+			LOGGER.info("Reading the file Char by Char");
 			byte byte1 = (byte) inputStream.read();
 			while (byte1 != -1) {
 
@@ -68,9 +67,7 @@ public class SearchTextFromFile {
 				}
 			}
 			inputStream.close();
-			//logger.info("all Word List::\n\n"+allWordList);
-			//System.out.println(allWordList);
-			//logger.info("The number of words in the choosen text file are: " + allWordList.size());
+			
 
 			String word = "";
 			for (int i = 0; i < allWordList.size(); i++) {
@@ -87,6 +84,7 @@ public class SearchTextFromFile {
 					   -> t1.getText().compareTo(t2.getText()));
 					   searchTextSet.addAll(textList);
 				List<Text> noDuplicatesTextList = new ArrayList<>(searchTextSet);
+				LOGGER.info("Removed the duplicates from the List Of Text");
 			return noDuplicatesTextList;
 
 		} catch (IOException ioException) {
