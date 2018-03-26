@@ -1,12 +1,20 @@
 package com.nayan.search.springboot.rest;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
 import static java.lang.Math.min;
+
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nayan.search.helper.WriteCsvToResponse;
 import com.nayan.search.springboot.model.Text;
 @RestController
 public class TextController {
@@ -18,10 +26,9 @@ public class TextController {
 		return textService.findAllTextWithCount();
 	}
 	
-	@GetMapping("/top/{number}")
-	public List<Text> retrieveTopSearchCount(@PathVariable Integer number) {
+	@RequestMapping(value = "/top/{number}", produces = "text/csv")
+	public void retrieveTopSearchCount(@PathVariable Integer number, HttpServletResponse response) throws IOException {
 		List<Text> sortedSearchTextByCount = textService.findSortedCountText();
-		
-		return  sortedSearchTextByCount.subList(0, min(sortedSearchTextByCount.size(), number));
+		WriteCsvToResponse.writeTopSearchedText(response.getWriter(), sortedSearchTextByCount.subList(0, min(sortedSearchTextByCount.size(), number)));
 	}
 }

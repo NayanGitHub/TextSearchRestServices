@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.nayan.search.springboot.model.Text;
 
 import java.util.Set;
@@ -22,15 +25,9 @@ import java.util.TreeSet;
 
 
 public class SearchTextFromFile {
-	//private static final Logger logger = Logger.getLogger(SearchTextFromFile.class);
-	public static boolean ASC = true;
-	public static boolean DESC = false;
 	
-	public static String FILE_LOCATION = "C:\\FileRepos\\ExampleFile.txt";
-
-	public static void main(String[] args) {
-		//countWords();
-	}
+	private static final Logger LOGGER = LoggerFactory.getLogger(SearchTextFromFile.class);
+	public static String FILE_LOCATION="src/main/resources/ExampleFile.txt";
 
 	public static List<Text> getListTextAndCount() {
 		String textFileLocation = FILE_LOCATION;
@@ -84,49 +81,17 @@ public class SearchTextFromFile {
 						count++;
 					}
 				}
-				/*txt.setText(word);
-				txt.setCount(count);*/
 				textList.add(new Text(word,count));
 			}
 				Set<Text> searchTextSet = new TreeSet<>((t1, t2) 
 					   -> t1.getText().compareTo(t2.getText()));
 					   searchTextSet.addAll(textList);
 				List<Text> noDuplicatesTextList = new ArrayList<>(searchTextSet);
-			// printMap(wordsWithCounts);
-			//System.out.println("After sorting descindeng order......");
-			//Map<String, Integer> sortedMapDesc = sortByComparator(wordsWithCounts, DESC);
-			//printMap(sortedMapDesc);
 			return noDuplicatesTextList;
 
 		} catch (IOException ioException) {
-			ioException.printStackTrace();
+			LOGGER.error("Error Reading From File", ioException);
 		}
 		return textList;
-	}
-
-	private static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap, final boolean order) {
-		List<Entry<String, Integer>> list = new LinkedList<Entry<String, Integer>>(unsortMap.entrySet());
-		// Sorting the list based on values
-		Collections.sort(list, new Comparator<Entry<String, Integer>>() {
-			public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
-				if (order) {
-					return o1.getValue().compareTo(o2.getValue());
-				} else {
-					return o2.getValue().compareTo(o1.getValue());
-				}
-			}
-		});
-		// Maintaining insertion order with the help of LinkedList
-		Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
-		for (Entry<String, Integer> entry : list) {
-			sortedMap.put(entry.getKey(), entry.getValue());
-		}
-		return sortedMap;
-	}
-
-	public static void printMap(Map<String, Integer> map) {
-		for (Entry<String, Integer> entry : map.entrySet()) {
-			System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
-		}
 	}
 }

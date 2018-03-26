@@ -8,21 +8,15 @@ import java.util.List;
 import com.nayan.search.helper.SearchTextFromFile;
 import com.nayan.search.springboot.model.*;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Component
 public class TextService {
-	//private static List<Student> students = new ArrayList<>();
 	
-	//@RequestMapping(method = RequestMethod.GET, consumes = "application/json")
 	public List<Text> findAllTextWithCount() {
 		List<Text> texts = SearchTextFromFile.getListTextAndCount();
 		return texts;
-		//return new ResponseEntity<>(assembler.toResourceCollection(texts), HttpStatus.OK);
 	}
 	
 	public List<Text> findSortedCountText() {
@@ -35,24 +29,5 @@ public class TextService {
 			   return 0;
 			});
 		return texts;
-		//return new ResponseEntity<>(assembler.toResourceCollection(texts), HttpStatus.OK);
 	}
-	
-	/*public Student retrieveStudent(String studentId) {
-		for (Student student : students) {
-			if(student.getId()!=null) {
-			if (student.getId().equals(studentId)) {
-				return student;
-			}
-			}
-		}
-		return null;
-	}*/
-	/*public List<Course> retrieveCourses(String studentId) {
-		Student student = retrieveStudent(studentId);
-		if (student == null) {
-			return null;
-		}
-		return student.getCourses();
-	}*/
 }
