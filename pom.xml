@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.in28minutes.springboot</groupId>
-	<artifactId>student-services</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>com.nayan.search.springboot</groupId>
+	<artifactId>TextSearchRestServices</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>student-services</name>
-	<description>Demo project for Spring Boot</description>
+	<name>TextSearchRestServices</name>
+	<description>RESTful Services to search text</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
