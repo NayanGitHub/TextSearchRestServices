@@ -1,17 +1,19 @@
 package com.nayan.search.springboot.rest;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// Authentication : User --> Roles
 	protected void configure(AuthenticationManagerBuilder auth)
 			throws Exception {
-		auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance()).withUser("user1").password("secret1")
-				.roles("USER").and().withUser("optus").password("candidates")
+		auth.inMemoryAuthentication().withUser("optus").password(passwordEncoder().encode("candidates"))
 				.roles("USER", "ADMIN");
 	}
 	// Authorization : Role -> Access
@@ -20,4 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.hasRole("USER").antMatchers("/**").hasRole("ADMIN").and()
 				.csrf().disable().headers().frameOptions().disable();
 	}
+	
+	@Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
