@@ -11,7 +11,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth)
 			throws Exception {
 		auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance()).withUser("user1").password("secret1")
-				.roles("USER").and().withUser("admin1").password("secret1")
+				.roles("USER").and().withUser("optus").password("candidates")
 				.roles("USER", "ADMIN");
 	}
 	// Authorization : Role -> Access
