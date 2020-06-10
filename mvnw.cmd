@@ -18,7 +18,7 @@
 @REM ----------------------------------------------------------------------------
 
 @REM ----------------------------------------------------------------------------
-@REM Maven2 Start Up Batch script
+@REM Maven2 Start Up Batch script 
 @REM
 @REM Required ENV vars:
 @REM JAVA_HOME - location of a JDK home dir
@@ -93,12 +93,12 @@ IF EXIST "%WDIR%"\.mvn goto baseDirFound
 cd ..
 IF "%WDIR%"=="%CD%" goto baseDirNotFound
 set WDIR=%CD%
+goto endDetectBaseDir
 goto findBaseDir
 
 :baseDirFound
 set MAVEN_PROJECTBASEDIR=%WDIR%
 cd "%EXEC_DIR%"
-goto endDetectBaseDir
 
 :baseDirNotFound
 set MAVEN_PROJECTBASEDIR=%EXEC_DIR%

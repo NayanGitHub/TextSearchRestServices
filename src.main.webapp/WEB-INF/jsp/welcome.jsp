@@ -1,3 +1,3 @@
 <div class="container">
-    Welcome ${name}!! 
+    Welcome ${name}!
 </div>
