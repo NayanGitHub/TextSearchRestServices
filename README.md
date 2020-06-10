@@ -1,5 +1,4 @@
 # TextSearchRestServices
-
 The Search Text Rest Web Service Application is developed by Java 8 in Spring Boot(all Spring Features included). The security is provided by Spring Security with Basic Authentication.
 
 The new Java 8 Lambda Expression features are used to remove duplication from List, Sorting the List
@@ -19,24 +18,24 @@ Run the Below test cases:
 
 Test Case: 1
 
-curl -X POST http://localhost:8080/counter-api/search -H "Authorization: Basic YWRtaW4xOnNlY3JldDE=" -d' {"searchText":["Duis", "Sed", "Donec", "Augue", "Pellentesque", "123"]}' -H "Content-Type: application/json"
+curl -X POST http://localhost:8080/counter-api/search -H "Authorization: Basic b3B0dXM6Y2FuZGlkYXRlcw==" -d' {"searchText":["Duis", "Sed", "Donec", "Augue", "Pellentesque", "123"]}' -H "Content-Type: application/json"
 
 Results:
 
-[{"text":"Duis","count":11},{"text":"Sed","count":16},{"text":"Donec","count":8},{"text":"Augue","count":7},{"text":"Pellentesque","count":6},{"text":"123","count":0}]
+{"counts":[{"Duis":"11"},{"Sed":"16"},{"Donec":"8"},{"Augue":"7"},{"Pellentesque":"6"},{"123":"0"}]}
+
 
 Test Case: 2
 
-curl -X POST http://localhost:8080/counter-api/search -H "Authorization: Basic YWRtaW4xOnNlY3JldDE=" -d' {"searchText":["Hamller", "Juke", "Ipsum", "vel", "Duis", "908123"]}' -H "Content-Type: application/json"
+curl -X POST http://localhost:8080/counter-api/search -H "Authorization: Basic b3B0dXM6Y2FuZGlkYXRlcw==" -d' {"searchText":["Hamller", "Juke", "Ipsum", "vel", "Duis", "908123"]}' -H "Content-Type: application/json"
 
 Results:
 
-[{"text":"Hamller","count":0},{"text":"Juke","count":0},{"text":"Ipsum","count":11},{"text":"vel","count":17},{"text":"Duis","count":11},{"text":"908123","count":0}]
-
+{"counts":[{"Hamller":"0"},{"Juke":"0"},{"Ipsum":"11"},{"vel":"17"},{"Duis":"11"},{"908123":"0"}]}
 
 Test Case: 3
 
-curl http://localhost:8080/counter-api/top/20 -H "Authorization: Basic YWRtaW4xOnNlY3JldDE=" -H "Accept: text/csv"
+curl http://localhost:8080/counter-api/top/20 -H "Authorization: Basic b3B0dXM6Y2FuZGlkYXRlcw==" -H "Accept: text/csv"
 
 Results:
 
@@ -63,7 +62,7 @@ ipsum|11
 
 Test Case: 4
 
-curl http://localhost:8080/counter-api/top/10 -H "Authorization: Basic YWRtaW4xOnNlY3JldDE=" -H "Accept: text/csv"
+curl http://localhost:8080/counter-api/top/10 -H "Authorization: Basic b3B0dXM6Y2FuZGlkYXRlcw==" -H "Accept: text/csv"
 
 Results:
 
@@ -77,4 +76,3 @@ et|14
 Ut|13
 eu|13
 ut|13
-
